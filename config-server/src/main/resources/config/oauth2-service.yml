@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 6dbd7fc114e779320245
+            client-secret: e262e036ee0b3146f23d8588d7be66f7dd9e005c
+          google:
+            client-id: 1001391363323-r28cjnoi7sp35v1odjaahujmjt64rh5i.apps.googleusercontent.com
+            client-secret: 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
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db
+    username: user
+    password: pass
+    hikari.max-lifetime: 60000
+    hikari.connection-timeout: 20000

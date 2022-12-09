@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  database1:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
+    volumes:
+      - data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  data:
