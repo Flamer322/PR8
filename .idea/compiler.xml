@@ -8,21 +8,38 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
+        <module name="demo-oauth2-spring-security" />
+        <module name="users-service" />
+        <module name="gateway-server" />
         <module name="eureka-server" />
-        <module name="oauth2-service" />
+        <module name="notes-service" />
+        <module name="notification-service" />
+        <module name="notifications-service" />
+        <module name="oauth-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config-server" target="17" />
+      <module name="demo-oauth2-spring-security" target="1.8" />
       <module name="eureka-server" target="17" />
-      <module name="oauth2-service" target="17" />
+      <module name="gateway-server" target="17" />
+      <module name="notes-service" target="17" />
+      <module name="notification-service" target="17" />
+      <module name="notifications-service" target="17" />
+      <module name="oauth-server" target="13" />
+      <module name="users-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
-      <module name="oauth2-service" options="-parameters" />
+      <module name="gateway-server" options="-parameters" />
+      <module name="notes-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="notifications-service" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
+      <module name="users-service" options="-parameters" />
     </option>
   </component>
 </project>

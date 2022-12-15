@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 6dbd7fc114e779320245
+            client-secret: e262e036ee0b3146f23d8588d7be66f7dd9e005c
+#            redirect-uri: "http://localhost:8080/login/oauth2/code/github"
+#          gateway:
+#            provider: keycloak
+#            client-id: oauth-client
+#            client-secret: nN7LLtgoDlmiKERca8YRWxOiyIuJmbDE
+#            authorization-grant-type: authorization_code
+#            redirect-uri: "http://localhost:9000/login/oauth2/code/gateway"
+#            scope: openid
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:9000/auth/realms/baeldung
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/users-db
+    username: user
+    password: pass
+    hikari.max-lifetime: 60000
+    hikari.connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: public
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

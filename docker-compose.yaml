@@ -1,15 +1,118 @@
 version: "3.9"
 services:
-  database1:
+  database:
     image: postgres:14.1-alpine
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
-      POSTGRES_DB: db
+      POSTGRES_DB: postgres
     volumes:
       - data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+
+  mailer:
+    image: cd2team/mailhog
     ports:
-      - "5432:5432"
+      - "8085:8025"
+    expose:
+      - 1025
+
+#  config-server:
+#    build:
+#      context: ./config-server
+#      dockerfile: Dockerfile
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    expose:
+#      - 8888
+#
+#  eureka-server:
+#    build:
+#      context: ./eureka-server
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - config-server
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    ports:
+#      - "8761:8761"
+#    expose:
+#      - 8761
+#
+#  notes-service:
+#    build:
+#      context: ./notes-service
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - config-server
+#      - eureka-server
+#      - database
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    expose:
+#      - 8082
+#
+#  notifications-service:
+#    build:
+#      context: ./notifications-service
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - config-server
+#      - eureka-server
+#      - database
+#      - mailer
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    expose:
+#      - 8083
+#
+#  users-service:
+#    build:
+#      context: ./users-service
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - config-server
+#      - eureka-server
+#      - database
+#      - notes-service
+#      - notifications-service
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    ports:
+#      - "8081:8081"
+#    expose:
+#      - 8081
+#
+#  gateway-server:
+#    build:
+#      context: ./gateway-server
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - config-server
+#      - eureka-server
+#      - notes-service
+#      - notifications-service
+#      - users-service
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#    ports:
+#      - "8080:8080"
 
 volumes:
   data:

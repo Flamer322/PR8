@@ -2,7 +2,18 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-oauth2-spring-security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-oauth2-spring-security/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oauth2-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/notes-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/notification-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/notifications-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauthhhh-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauthhhh-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/users-service/src/main/java" charset="UTF-8" />
   </component>
 </project>
