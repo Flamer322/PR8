@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+#      default-filters:
+#        - TokenRelay=
+      routes:
+        - id: auth
+          uri: lb://USERS-SERVICE
+          predicates:
+            - Path=/users/**
+          filters:
+            - StripPrefix=1
+
+        - id: users-service
+          uri: lb://USERS-SERVICE
+          predicates:
+            - Path=/users/**
+          filters:
+            - StripPrefix=1
+
+        - id: notes-service
+          uri: lb://NOTES-SERVICE
+          predicates:
+            - Path=/notes/**
+          filters:
+            - StripPrefix=1
+
+        - id: notifications-service
+          uri: lb://NOTIFICATIONS-SERVICE
+          predicates:
+            - Path=/notifications/**
+          filters:
+            - StripPrefix=1
+
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          gateway:
+#            provider: keycloak
+#            client-id: oauth-client
+#            client-secret: nN7LLtgoDlmiKERca8YRWxOiyIuJmbDE
+#            authorization-grant-type: authorization_code
+#            redirect-uri: "http://localhost:8080/users"
+#            scope: openid
+#        provider:
+#          keycloak:
+#            issuer-uri: http://localhost:9000/auth/realms/baeldung
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

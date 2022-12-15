@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td, tr, td {
+            border: 1px solid;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color:inherit;
+            text-decoration:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body style="width: 1450px; margin-left: auto; margin-right: auto">
+
+<div style="display: flex">
+    <div style="margin-right: 40px">
+        <h4>Ваш идентификатор: <span th:text="${userName}"></span></h4>
+    </div>
+    <div th:if="${userEmail == null}">
+        <form action="#" method="POST" th:action="@{/users/email}" th:object="${newEmail}">
+            <h4>
+                <label>
+                    Ваш email:
+                    <input type="email" name="email" style="margin-left: 10px"/>
+                </label>
+
+                <input type="submit" value="Сохранить"/>
+            </h4>
+        </form>
+    </div>
+    <div th:if="${userEmail != null}">
+        <h4>Ваш email: <span th:text="${userEmail}"></span></h4>
+    </div>
+</div>
+
+<div style="display: flex">
+    <div style="width: 700px">
+        <form action="#" method="POST" th:action="@{/users/notes}" th:object="${newNote}">
+            <label>
+                Введите текст заметки:
+                <br>
+                <textarea name="text" style="height: 40px; width: 630px"></textarea>
+            </label>
+            <br>
+            <br>
+            <input type="submit" value="Создать"/>
+        </form>
+
+        <br>
+
+        <div th:if="${notes.isEmpty()}">
+            У вас пока нет заметок
+        </div>
+
+        <table th:if="${notes.size() > 0}">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>Текст</th>
+                    <th>Дата создания</th>
+                </tr>
+                <tr th:each="note: ${notes}">
+                    <td style="width: 50px; text-align: center" th:text="${note.getId()}"></td>
+                    <td style="width: 420px" th:text="${note.getText()}"></td>
+                    <td style="width: 130px; text-align: center" th:text="${note.getCreatedAt()}"></td>
+                    <td style="width: 14px"><a th:href="@{/users/notes/{id}/delete(id=${note.getId()})}">✖</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-left: 50px; width: 700px">
+        <div th:if="${userEmail == null}">
+            Для создания уведомлений вам нужно указать свой email
+        </div>
+        <div th:if="${userEmail != null}">
+            <form action="#" method="POST" th:action="@{/users/notifications}" th:object="${newNotification}">
+                <label>
+                    Введите текст уведомления:
+                    <br>
+                    <textarea name="text" style="height: 40px; width: 700px"></textarea>
+                </label>
+                <br>
+                <br>
+                <label>
+                    Введите дату уведомления в формате <strong>yyyy-MM-dd HH:mm</strong>
+                    <input type="text" name="date" style="width: 120px; margin-left: 10px" pattern="[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]"/>
+                </label>
+                <br>
+                <br>
+                <input type="submit" value="Создать"/>
+            </form>
+
+            <br>
+
+            <div th:if="${notifications.isEmpty()}">
+                У вас пока нет уведомлений
+            </div>
+
+            <table th:if="${notifications.size() > 0}">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <th>Текст</th>
+                        <th>Дата отправки</th>
+                    </tr>
+                    <tr th:each="notification: ${notifications}">
+                        <td style="width: 50px; text-align: center" th:text="${notification.getId()}"></td>
+                        <td style="width: 504px" th:text="${notification.getText()}"></td>
+                        <td style="width: 130px; text-align: center" th:text="${notification.getDate()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
