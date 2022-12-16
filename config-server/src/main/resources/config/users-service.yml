@@ -8,18 +8,7 @@ spring:
         registration:
           github:
             client-id: 6dbd7fc114e779320245
-            client-secret: e262e036ee0b3146f23d8588d7be66f7dd9e005c
-#            redirect-uri: "http://localhost:8080/login/oauth2/code/github"
-#          gateway:
-#            provider: keycloak
-#            client-id: oauth-client
-#            client-secret: nN7LLtgoDlmiKERca8YRWxOiyIuJmbDE
-#            authorization-grant-type: authorization_code
-#            redirect-uri: "http://localhost:9000/login/oauth2/code/gateway"
-#            scope: openid
-#        provider:
-#          keycloak:
-#            issuer-uri: http://localhost:9000/auth/realms/baeldung
+            client-secret: 855280e2409fe0f7955aca7bcdf9aaf51923e4f5
 
   datasource:
     driver-class-name: org.postgresql.Driver

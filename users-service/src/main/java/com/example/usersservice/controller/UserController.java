@@ -5,6 +5,7 @@ import com.example.usersservice.dto.EmailDTO;
 import com.example.usersservice.dto.NoteDTO;
 import com.example.usersservice.dto.NotificationDTO;
 import lombok.AllArgsConstructor;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,12 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/users")
 @AllArgsConstructor
 public class UserController {
     private UserService userService;
 
     @GetMapping("/")
-    public String index(Principal token, Model model) {
+    public String index(OAuth2AuthenticationToken token, Model model) {
         String userName = token.getName();
 
         model.addAttribute("userName", userName);
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping("/notes")
-    public String addUserNote(Principal token, @ModelAttribute NoteDTO newNoteDTO) {
+    public String addUserNote(OAuth2AuthenticationToken token, @ModelAttribute NoteDTO newNoteDTO) {
         String userName = token.getName();
 
         int userId = userService.getUserId(userName);
@@ -60,18 +60,18 @@ public class UserController {
 
         userService.addUserNote(newNoteDTO);
 
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/notes/{noteId}/delete")
     public String deleteUserNote(@PathVariable("noteId") int noteId) {
         userService.deleteUserNote(noteId);
 
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @PostMapping("/notifications")
-    public String addUserNotification(Principal token, @ModelAttribute NotificationDTO newNotificationDTO) {
+    public String addUserNotification(OAuth2AuthenticationToken token, @ModelAttribute NotificationDTO newNotificationDTO) {
         String userName = token.getName();
 
         int userId = userService.getUserId(userName);
@@ -80,11 +80,11 @@ public class UserController {
 
         userService.addUserNotification(newNotificationDTO);
 
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @PostMapping("/email")
-    public String setUserEmail(Principal token, @ModelAttribute EmailDTO emailDTO) {
+    public String setUserEmail(OAuth2AuthenticationToken token, @ModelAttribute EmailDTO emailDTO) {
         String userName = token.getName();
 
         int userId = userService.getUserId(userName);
@@ -93,11 +93,6 @@ public class UserController {
 
         userService.setUserEmail(emailDTO);
 
-        return "redirect:/users";
+        return "redirect:/";
     }
-
-//    @GetMapping("/users")
-//    public String redirectBack() {
-//        return "redirect:http://localhost:8080/users";
-//    }
 }

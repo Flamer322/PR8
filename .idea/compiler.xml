@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
-        <module name="demo-oauth2-spring-security" />
         <module name="users-service" />
         <module name="gateway-server" />
         <module name="eureka-server" />

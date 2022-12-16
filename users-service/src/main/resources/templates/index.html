@@ -27,7 +27,7 @@
         <h4>Ваш идентификатор: <span th:text="${userName}"></span></h4>
     </div>
     <div th:if="${userEmail == null}">
-        <form action="#" method="POST" th:action="@{/users/email}" th:object="${newEmail}">
+        <form action="#" method="POST" th:action="@{/email}" th:object="${newEmail}">
             <h4>
                 <label>
                     Ваш email:
@@ -45,7 +45,7 @@
 
 <div style="display: flex">
     <div style="width: 700px">
-        <form action="#" method="POST" th:action="@{/users/notes}" th:object="${newNote}">
+        <form action="#" method="POST" th:action="@{/notes}" th:object="${newNote}">
             <label>
                 Введите текст заметки:
                 <br>
@@ -73,7 +73,7 @@
                     <td style="width: 50px; text-align: center" th:text="${note.getId()}"></td>
                     <td style="width: 420px" th:text="${note.getText()}"></td>
                     <td style="width: 130px; text-align: center" th:text="${note.getCreatedAt()}"></td>
-                    <td style="width: 14px"><a th:href="@{/users/notes/{id}/delete(id=${note.getId()})}">✖</a></td>
+                    <td style="width: 14px"><a th:href="@{/notes/{id}/delete(id=${note.getId()})}">✖</a></td>
                 </tr>
             </tbody>
         </table>
@@ -83,7 +83,7 @@
             Для создания уведомлений вам нужно указать свой email
         </div>
         <div th:if="${userEmail != null}">
-            <form action="#" method="POST" th:action="@{/users/notifications}" th:object="${newNotification}">
+            <form action="#" method="POST" th:action="@{/notifications}" th:object="${newNotification}">
                 <label>
                     Введите текст уведомления:
                     <br>
